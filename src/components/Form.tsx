@@ -1,22 +1,20 @@
+import { useCallAIResponse } from "@/hook/useCallAIResponse";
 import { sings } from "@/utils/data";
+import { DisplayTextMarkdown } from "./DisplayTextMarkdown";
 
-interface IFormProps {
-  name: string;
-  sign: string;
-  loading: boolean;
-  handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
-  setName: (name: string) => void;
-  setSign: (sign: string) => void;
-}
+export const Form = () => {
+  const {
+    name,
+    sign,
+    loading,
+    setName,
+    setSign,
+    handleSubmit,
+    aiResponseText,
+  } = useCallAIResponse();
 
-export const Form = ({
-  loading,
-  name,
-  sign,
-  handleSubmit,
-  setName,
-  setSign,
-}: IFormProps) => {
+  console.log(aiResponseText);
+
   return (
     <form className="flex flex-col gap-[10px] w-1/2 md:w-1/3 mt-10">
       <input
@@ -43,7 +41,7 @@ export const Form = ({
       </select>
 
       <button
-        onClick={() => handleSubmit}
+        onClick={handleSubmit}
         className="w-full bg-black text-white rounded-md p-2 mt-2 hover:bg-gray-800 hover:cursor-pointer
       disabled:bg-gray-400 disabled:cursor-not-allowed disabled:hover:bg-gray-400
       "
@@ -51,6 +49,13 @@ export const Form = ({
       >
         <a>Analizar</a>
       </button>
+
+      {loading && (
+        <span className="text-center text-gray-400">
+          Analisando... Aguarde um momento.
+        </span>
+      )}
+      <DisplayTextMarkdown text={aiResponseText?.message} />
     </form>
   );
 };

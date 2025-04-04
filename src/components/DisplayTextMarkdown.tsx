@@ -1,13 +1,20 @@
+import { useTypeAnimation } from "@/hook/useTypeAnimation";
 import ReactMarkdown from "react-markdown";
 
-interface DisplayTextMarkdownProps {
-  displayedText: string;
+interface IDisplayTextMarkdownProps {
+  text?: string;
+  loading?: boolean;
 }
-export const DisplayTextMarkdown = ({
-  displayedText,
-}: DisplayTextMarkdownProps) => {
+
+export const DisplayTextMarkdown = ({ text }: IDisplayTextMarkdownProps) => {
+  const { displayedText } = useTypeAnimation({
+    aiResponseText: { message: text || "" },
+  });
+
+  if (text === undefined) return null;
+
   return (
-    <section className="flex flex-col gap-[10px] w-1/2 bg-gray-300 p-4 rounded-md">
+    <section className="w-full flex flex-col gap-[10px] bg-gray-300 p-4 rounded-md h-[400px] overflow-auto">
       <ReactMarkdown>{displayedText}</ReactMarkdown>
     </section>
   );

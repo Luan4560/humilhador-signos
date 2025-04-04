@@ -12,13 +12,13 @@ export const useTypeAnimation = ({
 
     const interval = setInterval(() => {
       if (!aiResponseText?.message) return;
-      setDisplayedText((prev) => prev + aiResponseText.message[index - 1]);
+      setDisplayedText((prev) => prev + aiResponseText.message[index]);
       index++;
 
       if (index >= aiResponseText.message.length) {
         clearInterval(interval);
       }
-    }, 10);
+    }, 20);
 
     return () => clearInterval(interval);
   }, [aiResponseText?.message]);

@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 
 export const useCallAIResponse = () => {
@@ -26,6 +28,7 @@ export const useCallAIResponse = () => {
       );
 
       const data = await response.json();
+
       setAiResponseText(data);
       setLoading(false);
     } catch (error) {
