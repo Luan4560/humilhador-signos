@@ -14,13 +14,18 @@ export const Header = () => {
       <nav>
         <ol className="flex justify-end items-center p-5 gap-4">
           <li>
-            <Link target="_blank" href={externalUrl}>
+            <Link className="font-bold" target="_blank" href={externalUrl}>
               Apoiar
             </Link>
           </li>
 
           <li>
-            <Link href={`${process.env.NEXT_PUBLIC_LIVEPIX_URL}`}>Github</Link>
+            <Link
+              className="font-bold"
+              href="https://github.com/Luan4560/humilhador-signos"
+            >
+              Github
+            </Link>
           </li>
         </ol>
       </nav>
