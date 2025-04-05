@@ -8,28 +8,28 @@ export const useCallAIResponse = () => {
   const [aiResponseText, setAiResponseText] = useState<{ message: string }>();
   const [loading, setLoading] = useState(false);
 
+  const URI = process.env.NEXT_PUBLIC_API;
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     try {
       setLoading(true);
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API}/api/horoscope`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            name,
-            sign,
-          }),
-        }
-      );
+      const response = await fetch(`${URI}/api/horoscope`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name,
+          sign,
+        }),
+      });
 
       const data = await response.json();
 
       setAiResponseText(data);
+
       setLoading(false);
     } catch (error) {
       console.log({ error: (error as Error).message });
