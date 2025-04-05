@@ -13,8 +13,6 @@ export const Form = () => {
     aiResponseText,
   } = useCallAIResponse();
 
-  console.log(aiResponseText);
-
   return (
     <form className="flex flex-col gap-[10px] w-1/2 md:w-1/3 mt-10">
       <input
@@ -34,8 +32,8 @@ export const Form = () => {
         <option>Selecione seu signo</option>
 
         {sings.map((person) => (
-          <option key={person} value={person}>
-            {person}
+          <option key={person.id} value={person.name}>
+            {person.name}
           </option>
         ))}
       </select>

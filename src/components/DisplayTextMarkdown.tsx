@@ -1,4 +1,5 @@
 import { useTypeAnimation } from "@/hook/useTypeAnimation";
+import { removeUndefinedWord } from "@/utils/removeUndefined";
 import ReactMarkdown from "react-markdown";
 
 interface IDisplayTextMarkdownProps {
@@ -15,7 +16,7 @@ export const DisplayTextMarkdown = ({ text }: IDisplayTextMarkdownProps) => {
 
   return (
     <section className="w-full flex flex-col gap-[10px] bg-gray-300 p-4 rounded-md h-[400px] overflow-auto">
-      <ReactMarkdown>{displayedText}</ReactMarkdown>
+      <ReactMarkdown>{removeUndefinedWord(displayedText)}</ReactMarkdown>
     </section>
   );
 };
