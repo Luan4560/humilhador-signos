@@ -14,7 +14,7 @@ export const Form = () => {
   } = useCallAIResponse();
 
   return (
-    <form className="flex flex-col gap-[10px] w-1/2 md:w-1/3 mt-10">
+    <form className="flex flex-col gap-[10px] w-full md:w-1/3 mt-10">
       <input
         className="w-full outline-gray-400 border-2 border-gray-400 rounded-md p-2"
         type="text"
