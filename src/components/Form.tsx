@@ -45,7 +45,7 @@ export const Form = () => {
       "
         disabled={name.length <= 0 || sign.length <= 0 || loading}
       >
-        <a>Analizar</a>
+        <a>Analisar</a>
       </button>
 
       {loading && (
