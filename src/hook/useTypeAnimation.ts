@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 export const useTypeAnimation = ({
   aiResponseText,
 }: {
-  aiResponseText: { message: string };
+  aiResponseText: { message: string | undefined };
 }) => {
   const [displayedText, setDisplayedText] = useState("");
 
@@ -12,7 +12,7 @@ export const useTypeAnimation = ({
 
     const interval = setInterval(() => {
       if (!aiResponseText?.message) return;
-      setDisplayedText((prev) => prev + aiResponseText.message[index]);
+      setDisplayedText((prev) => prev + aiResponseText.message?.[index]);
       index++;
 
       if (index >= aiResponseText.message.length) {
